@@ -30,12 +30,14 @@ export async function generateMetadata(): Promise<Metadata> {
             description: page.seo.metaDescription,
             keywords: page.seo.metaKeywords,
             ogImage: page.seo.openGraphImage,
+            slug: "/privacy-policy"
         });
     }
 
     return genMeta({
         title: "Privacy Policy",
         description: "Our privacy policy outlines how we collect, use, and protect your personal information.",
+        slug: "/privacy-policy"
     });
 }
 

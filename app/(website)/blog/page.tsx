@@ -15,6 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: page.seo.metaDescription,
       keywords: page.seo.metaKeywords,
       ogImage: page.seo.openGraphImage,
+      slug: "/blog"
     });
   }
 

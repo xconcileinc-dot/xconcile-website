@@ -13,6 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
         title: "Meet Our Team",
         description: "Get to know the talented professionals behind our success. Our team brings expertise, dedication, and passion to every project.",
         keywords: ["team", "professionals", "experts", "leadership", "staff"],
+        slug: "/team"
     })
 }
 

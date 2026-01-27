@@ -14,7 +14,8 @@ export async function generateMetadata(): Promise<Metadata> {
       title: sanityData.seo.metaTitle || "Contact Us",
       description: sanityData.seo.metaDescription,
       keywords: sanityData.seo.metaKeywords,
-      ogImage: sanityData.seo.openGraphImage
+      ogImage: sanityData.seo.openGraphImage,
+      slug: "/contact"
     });
   }
 
@@ -23,6 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Get in touch with our team. We're here to help you solve your business challenges.",
     keywords: ["contact", "support", "help", "message"],
+    slug: "/contact"
   });
 }
 

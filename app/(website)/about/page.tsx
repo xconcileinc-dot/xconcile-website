@@ -20,7 +20,8 @@ export async function generateMetadata(): Promise<Metadata> {
       title: sanityData.seo.metaTitle || "About Us",
       description: sanityData.seo.metaDescription,
       keywords: sanityData.seo.metaKeywords,
-      ogImage: sanityData.seo.openGraphImage
+      ogImage: sanityData.seo.openGraphImage,
+      slug: "/about"
     });
   }
 
@@ -29,6 +30,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Xconcile was built to solve the #1 problem facing US accounting firms: the talent gap. We provide the infrastructure you need to say yes to more clients.",
     keywords: ["about", "company", "mission", "values", "team", "CPA services"],
+    slug: "/about"
   });
 }
 
