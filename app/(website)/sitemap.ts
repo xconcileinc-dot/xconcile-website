@@ -5,7 +5,7 @@ import { client } from '@/lib/sanity/client'
 export const revalidate = 60
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yoursite.com'
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://xconcile.com'
 
     // Fetch all dynamic content slugs from Sanity
     const [serviceSlugs, industrySlugs, hireStaffSlugs, postSlugs] = await Promise.all([

@@ -93,7 +93,7 @@ export const metadata = generateMetadata({
 Create a `.env.local` file:
 
 ```env
-NEXT_PUBLIC_SITE_URL=https://yoursite.com
+NEXT_PUBLIC_SITE_URL=https://xconcile.com
 ```
 
 ## Learn More

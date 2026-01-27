@@ -41,7 +41,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
     nofollow = false,
   } = { ...defaultSEO, ...config };
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://yoursite.com";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://xconcile.com";
   // Don't add site name suffix here - Next.js will handle it via title template
   const fullTitle = title;
 
@@ -161,7 +161,7 @@ export function generateArticleSchema(post: {
       name: "Xconcile",
       logo: {
         "@type": "ImageObject",
-        url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://yoursite.com"}/favicon.ico`,
+        url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://xconcile.com"}/favicon.ico`,
       },
     },
     mainEntityOfPage: {
@@ -175,7 +175,7 @@ export function generateArticleSchema(post: {
  * Common organization structured data
  */
 export function getOrganizationSchema() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://yoursite.com";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://xconcile.com";
   return generateStructuredData("Organization", {
     name: "Xconcile",
     url: siteUrl,

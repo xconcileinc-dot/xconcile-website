@@ -9,7 +9,7 @@ Disallow: /studio/
 Disallow: /api/
 
 # Sitemap location
-Sitemap: https://yoursite.com/sitemap.xml
+Sitemap: https://xconcile.com/sitemap.xml
 
 # Optional: Common bot configurations
 # User-agent: Googlebot

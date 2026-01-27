@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   creator: "Xconcile",
   publisher: "Xconcile",
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://yoursite.com"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://xconcile.com"
   ),
   formatDetection: {
     email: false,
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: process.env.NEXT_PUBLIC_SITE_URL || "https://yoursite.com",
+    url: process.env.NEXT_PUBLIC_SITE_URL || "https://xconcile.com",
     siteName: "Xconcile",
     title: "Xconcile | Professional Accounting & Financial Services",
     description:
