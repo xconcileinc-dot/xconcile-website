@@ -106,7 +106,8 @@ export function ContactForm({ data }: { data: any }) {
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 {status.message && (
                                     <div
-                                        className={`p-4 rounded-lg ${status.type === "success"
+                                        id="contact-form-status"
+                                        className={`contact-form-status p-4 rounded-lg ${status.type === "success"
                                             ? "bg-green-50 text-green-700"
                                             : "bg-red-50 text-red-700"
                                             }`}

@@ -348,8 +348,8 @@ export const Header: React.FC = () => {
               <Link href="/contact" className="hidden md:inline-flex">
                 <Button
                   variant="primary"
-                  size="sm"
-                  className="bg-secondary-600 hover:bg-secondary-700 w-44"
+                  size="md"
+                  className="bg-secondary-600 hover:bg-secondary-700 w-48"
                 >
                   Schedule a Call
                 </Button>
