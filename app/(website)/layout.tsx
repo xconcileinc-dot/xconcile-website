@@ -90,47 +90,43 @@ export default function RootLayout({
   const organizationSchema = getOrganizationSchema();
 
   return (
-    <>
-      {/* Google Tag Manager - Loads before page becomes interactive */}
-      <Script
-        id="gtm-script"
-        strategy="beforeInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    <html lang="en" className={inter.variable}>
+      <head>
+        {/* Google Tag Manager - Loads before page becomes interactive */}
+        <Script
+          id="gtm-script"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-WRRFT9ZZ');`,
-        }}
-      />
-
-      <html lang="en" className={inter.variable}>
-        <head>
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(organizationSchema),
-            }}
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+      </head>
+      <body className="min-h-screen antialiased flex flex-col">
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-WRRFT9ZZ"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
           />
-        </head>
-        <body className="min-h-screen antialiased flex flex-col">
-          {/* Google Tag Manager (noscript) */}
-          <noscript>
-            <iframe
-              src="https://www.googletagmanager.com/ns.html?id=GTM-WRRFT9ZZ"
-              height="0"
-              width="0"
-              style={{ display: "none", visibility: "hidden" }}
-            />
-          </noscript>
-          {/* End Google Tag Manager (noscript) */}
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <SpeedInsights />
-        </body>
-      </html>
-    </>
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
+        <SpeedInsights />
+      </body>
+    </html>
   );
 }
-

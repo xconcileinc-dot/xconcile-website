@@ -86,11 +86,12 @@ export default async function HireStaffPage({ params }: PageProps) {
       >
         <div className="absolute inset-0 opacity-20">
           <Image
-            src={position.heroImage || 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1920&h=1080&fit=crop'}
+            src={position.heroImage ? position.heroImage : 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1920&h=1080&fit=crop'}
             alt={position.heroImageAlt || position.title}
             fill
             className="object-cover"
             priority
+            unoptimized
           />
         </div>
 
