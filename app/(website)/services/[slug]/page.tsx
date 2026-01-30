@@ -85,7 +85,7 @@ export default async function ServicePage({ params }: PageProps) {
       >
         <div className="absolute inset-0 opacity-20">
           <Image
-            src={service.heroImage}
+            src={service.heroImage || 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&h=1080&fit=crop'}
             alt={service.heroImageAlt || service.title}
             fill
             className="object-cover"
