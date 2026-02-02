@@ -35,7 +35,6 @@ export default defineType({
             title: 'Hero Title Highlight',
             type: 'string',
             description: 'The part of the title that stands out (e.g. "Done Right")',
-            description: 'The part of the title that stands out (e.g. "Done Right")',
             group: 'hero',
         }),
         defineField({
@@ -190,7 +189,12 @@ export default defineType({
                     type: 'object',
                     fields: [
                         defineField({ name: 'title', type: 'string', title: 'Title' }),
-                        defineField({ name: 'description', type: 'text', title: 'Description' }),
+                        defineField({
+                            name: 'description',
+                            type: 'array',
+                            title: 'Description',
+                            of: [{ type: 'block' }]
+                        }),
                         defineField({
                             name: 'linkText',
                             type: 'string',

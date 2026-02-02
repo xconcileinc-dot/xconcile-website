@@ -53,8 +53,6 @@ export default defineType({
             name: 'icon',
             title: 'Icon Name',
             type: 'string',
-            title: 'Icon Name',
-            type: 'string',
             group: 'hero',
         }),
         defineField({
@@ -241,6 +239,19 @@ export default defineType({
             title: 'Why Choose Us',
             type: 'array',
             of: [{ type: 'feature' }],
+            group: 'content',
+        }),
+        defineField({
+            name: 'testimonialsTitle',
+            title: 'Testimonials Section Title',
+            type: 'string',
+            group: 'content',
+        }),
+        defineField({
+            name: 'testimonialsDescription',
+            title: 'Testimonials Section Description',
+            type: 'text',
+            rows: 2,
             group: 'content',
         }),
         defineField({

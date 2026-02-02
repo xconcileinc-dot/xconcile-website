@@ -192,7 +192,7 @@ export const Header: React.FC = () => {
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center group">
-              <div className="relative h-14 w-auto transition-transform duration-200 group-hover:scale-105">
+              <div className="relative h-12 w-auto transition-transform duration-200 group-hover:scale-105">
                 <Image
                   src="/logo_autocropped.png"
                   alt="Xconcile"

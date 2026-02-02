@@ -300,16 +300,22 @@ export default async function IndustryPage({ params }: PageProps) {
       {industry.testimonials && industry.testimonials.length > 0 && (
         <Section background="gray" spacing="lg">
           <Container>
-            <div className="max-w-5xl mx-auto animate-fade-in-up">
-              <TestimonialSlider
-                testimonials={industry.testimonials.map((t: any) => ({
-                  quote: t.quote,
-                  author: t.author,
-                  role: t.role,
-                  company: t.company,
-                }))}
-              />
+            <div className="text-center mb-12 animate-fade-in-up">
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
+                {industry.testimonialsTitle || "Industry Success Stories"}
+              </h2>
+              <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
+                {industry.testimonialsDescription || `Trusted by leading ${industry.title} businesses worldwide`}
+              </p>
             </div>
+            <TestimonialSlider
+              testimonials={industry.testimonials.map((t: any) => ({
+                quote: t.quote,
+                author: t.author,
+                role: t.role,
+                company: t.company,
+              }))}
+            />
           </Container>
         </Section>
       )}
