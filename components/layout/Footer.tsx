@@ -74,12 +74,12 @@ export async function Footer() {
             {/* Company Info & Social */}
             <div className="col-span-2 md:col-span-1">
               <Link href="/" className="mb-6 block group">
-                <div className="relative h-12 w-auto transition-opacity duration-200 group-hover:opacity-90">
+                <div className="relative h-14 w-auto transition-opacity duration-200 group-hover:opacity-90">
                   <Image
-                    src="/logo-horizontal-refined.png"
+                    src="/logo_autocropped.png"
                     alt="Xconcile"
-                    width={180}
-                    height={48}
+                    width={163}
+                    height={56}
                     className="h-full w-auto object-contain object-left"
                   />
                 </div>
