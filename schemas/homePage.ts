@@ -35,6 +35,22 @@ export default defineType({
             title: 'Hero Title Highlight',
             type: 'string',
             description: 'The part of the title that stands out (e.g. "Done Right")',
+            description: 'The part of the title that stands out (e.g. "Done Right")',
+            group: 'hero',
+        }),
+        defineField({
+            name: 'heroBackgroundImage',
+            title: 'Hero Background Image',
+            type: 'image',
+            options: { hotspot: true },
+            fields: [
+                {
+                    name: 'alt',
+                    type: 'string',
+                    title: 'Alternative Text',
+                    description: 'Important for SEO and accessibility',
+                }
+            ],
             group: 'hero',
         }),
         defineField({

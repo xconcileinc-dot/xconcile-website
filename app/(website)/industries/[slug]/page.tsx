@@ -81,12 +81,12 @@ export default async function IndustryPage({ params }: PageProps) {
       <Section
         background="white"
         spacing="xl"
-        className="relative bg-gradient-to-b from-primary-900 via-primary-800 to-primary-900 text-white overflow-hidden py-20 md:py-24 lg:py-32"
+        className="relative bg-gradient-to-b from-primary-900 via-primary-800 to-primary-900 text-white overflow-hidden"
       >
-        <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 opacity-10">
           <Image
-            src={industry.heroImage ? industry.heroImage : 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&h=1080&fit=crop'}
-            alt={industry.heroImageAlt || industry.title}
+            src={industry.heroBackgroundImage || industry.heroImage || 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&h=1080&fit=crop'}
+            alt={industry.heroBackgroundImageAlt || "Background"}
             fill
             className="object-cover"
             priority
@@ -103,22 +103,33 @@ export default async function IndustryPage({ params }: PageProps) {
             ]}
             className="mb-8 text-primary-200"
           />
-          <div className="max-w-4xl animate-fade-in-up">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 text-white leading-[1.1] tracking-tight">
-              {industry.title}
-            </h1>
-            <p className="text-lg md:text-xl text-primary-100 mb-12 max-w-3xl leading-relaxed font-medium">
-              {industry.longDescription}
-            </p>
-            <Link href={industry.heroCTA?.link || "/contact"}>
-              <Button
-                variant={industry.heroCTA?.variant || "secondary"}
-                size="lg"
-                className="bg-secondary-500 hover:bg-secondary-600 text-white px-12 py-5 text-lg font-bold shadow-xl border-2 border-transparent"
-              >
-                {industry.heroCTA?.text || "Schedule Free Consultation"}
-              </Button>
-            </Link>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="animate-fade-in-up">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-white leading-tight break-words">
+                {industry.title}
+              </h1>
+              <p className="text-lg md:text-xl text-primary-100 mb-10 max-w-2xl leading-relaxed">
+                {industry.longDescription}
+              </p>
+              <Link href={industry.heroCTA?.link || "/contact"}>
+                <Button
+                  variant={industry.heroCTA?.variant || "secondary"}
+                  size="lg"
+                  className="bg-secondary-500 hover:bg-secondary-600 text-white px-12 py-5 text-lg font-bold shadow-xl border-2 border-transparent"
+                >
+                  {industry.heroCTA?.text || "Schedule Free Consultation"}
+                </Button>
+              </Link>
+            </div>
+            <div className="hidden lg:block relative h-[31.25rem] rounded-2xl overflow-hidden shadow-2xl animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+              <Image
+                src={industry.heroImage || "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&h=1080&fit=crop"}
+                alt={industry.heroImageAlt || industry.title}
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
           </div>
         </Container>
       </Section>

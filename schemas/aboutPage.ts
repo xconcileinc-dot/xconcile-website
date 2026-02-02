@@ -40,6 +40,21 @@ export default defineType({
             group: 'hero',
         }),
         defineField({
+            name: 'heroBackgroundImage',
+            title: 'Hero Background Image',
+            type: 'image',
+            options: { hotspot: true },
+            fields: [
+                {
+                    name: 'alt',
+                    type: 'string',
+                    title: 'Alternative Text',
+                    description: 'Important for SEO and accessibility',
+                }
+            ],
+            group: 'hero',
+        }),
+        defineField({
             name: 'heroImage',
             title: 'Hero Image',
             type: 'image',

@@ -87,7 +87,15 @@ export default async function AboutPage() {
         spacing="xl"
         className="relative overflow-hidden bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700"
       >
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1920&h=1080&fit=crop')] opacity-10 bg-cover bg-center"></div>
+        <div className="absolute inset-0 opacity-10">
+          {/* Background Image */}
+          <Image
+            src={data.heroBackgroundImage || "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1920&h=1080&fit=crop"}
+            alt={data.heroBackgroundImageAlt || "Background"}
+            fill
+            className="object-cover"
+          />
+        </div>
 
         <Container className="relative z-10">
           <Breadcrumb

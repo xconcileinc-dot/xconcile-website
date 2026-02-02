@@ -92,10 +92,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        {/* Google Tag Manager - Loads before page becomes interactive */}
-        <Script
+        {/* Google Tag Manager - Placed directly in head for verification */}
+        <script
           id="gtm-script"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

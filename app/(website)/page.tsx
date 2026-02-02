@@ -183,12 +183,13 @@ export default async function HomePage() {
         {/* Background Image Overlay */}
         <div className="absolute inset-0 opacity-10">
           <Image
-            src={data.heroImage}
-            alt={data.heroImageAlt || "Professional business team"}
+            src={data.heroBackgroundImage || data.heroImage} // Fallback to heroImage if background not set
+            alt={data.heroBackgroundImageAlt || "Background"}
             fill
             className="object-cover"
             priority
           />
+
         </div>
 
         <Container className="relative z-10">
@@ -233,8 +234,8 @@ export default async function HomePage() {
               style={{ animationDelay: "0.2s" }}
             >
               <Image
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop"
-                alt={data.introductionImageAlt || "Business professionals working together"}
+                src={data.heroImage || "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop"} // Fallback to static if main image not set
+                alt={data.heroImageAlt || "Business professionals working together"}
                 fill
                 className="object-cover"
                 priority

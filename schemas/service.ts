@@ -54,6 +54,22 @@ export default defineType({
             title: 'Icon Name',
             type: 'string',
             description: 'Lucide icon name (e.g., "book", "users")',
+            description: 'Lucide icon name (e.g., "book", "users")',
+            group: 'hero',
+        }),
+        defineField({
+            name: 'heroBackgroundImage',
+            title: 'Hero Background Image',
+            type: 'image',
+            options: { hotspot: true },
+            fields: [
+                {
+                    name: 'alt',
+                    type: 'string',
+                    title: 'Alternative Text',
+                    description: 'Important for SEO and accessibility',
+                }
+            ],
             group: 'hero',
         }),
         defineField({
