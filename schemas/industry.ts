@@ -180,6 +180,37 @@ export default defineType({
             group: 'content',
         }),
         defineField({
+            name: 'whyPartnerImage',
+            title: 'Why Partner With Us Image',
+            type: 'image',
+            description: 'Image displayed in the "Why Partner With Us" section',
+            options: { hotspot: true },
+            fields: [
+                {
+                    name: 'alt',
+                    type: 'string',
+                    title: 'Alternative Text',
+                    description: 'Important for SEO and accessibility',
+                }
+            ],
+            group: 'content',
+        }),
+        defineField({
+            name: 'whyPartnerImageLabel',
+            title: 'Why Partner Image - Label',
+            type: 'string',
+            description: 'Small label text displayed on the image (e.g., "Innovation Partner")',
+            group: 'content',
+        }),
+        defineField({
+            name: 'whyPartnerImageTagline',
+            title: 'Why Partner Image - Tagline',
+            type: 'text',
+            rows: 2,
+            description: 'Tagline text displayed on the image',
+            group: 'content',
+        }),
+        defineField({
             name: 'testimonialsTitle',
             title: 'Testimonials Section Title',
             type: 'string',

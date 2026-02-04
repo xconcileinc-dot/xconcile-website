@@ -302,18 +302,20 @@ export default async function HireStaffPage({ params }: PageProps) {
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-primary-500/10 rounded-full blur-[120px] -z-10 animate-pulse"></div>
               <div className="relative h-full rounded-[60px] overflow-hidden shadow-2xl border-8 border-white/5">
                 <Image
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=1200&fit=crop"
-                  alt="Client success story"
+                  src={position.whyPartnerImage || "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=1200&fit=crop"}
+                  alt={position.whyPartnerImageAlt || "Client success story"}
                   fill
                   className="object-cover"
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary-900 via-primary-900/40 to-transparent p-12">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-12 h-1 bg-secondary-500"></div>
-                    <span className="text-secondary-400 font-bold uppercase tracking-widest text-xs">Innovation Partner</span>
+                    <span className="text-secondary-400 font-bold uppercase tracking-widest text-xs">
+                      {position.whyPartnerImageLabel || "Innovation Partner"}
+                    </span>
                   </div>
                   <p className="text-2xl text-white font-bold leading-tight">
-                    Driving performance through <br />strategic financial leadership.
+                    {position.whyPartnerImageTagline || "Driving performance through strategic financial leadership."}
                   </p>
                 </div>
               </div>
