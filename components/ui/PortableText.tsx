@@ -59,8 +59,8 @@ const components = {
         },
     },
     list: {
-        bullet: ({ children }: any) => <ul className="list-disc list-outside ml-5 mb-4 space-y-2 text-neutral-700">{children}</ul>,
-        number: ({ children }: any) => <ol className="list-decimal list-outside ml-5 mb-4 space-y-2 text-neutral-700">{children}</ol>,
+        bullet: ({ children }: any) => <ul className="list-disc list-outside ml-5 mb-4 space-y-2 text-base leading-relaxed text-neutral-700">{children}</ul>,
+        number: ({ children }: any) => <ol className="list-decimal list-outside ml-5 mb-4 space-y-2 text-base leading-relaxed text-neutral-700">{children}</ol>,
     },
 }
 

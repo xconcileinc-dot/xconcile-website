@@ -70,13 +70,12 @@ export default defineType({
             name: 'author',
             title: 'Author',
             type: 'string',
-            hidden: true, // Hidden but keep for data migration
         }),
         defineField({
             name: 'authorRole',
             title: 'Author Role',
             type: 'string',
-            hidden: true, // Hidden but keep for data migration
+            hidden: true, // Not needed - kept for data migration
         }),
         defineField({
             name: 'readTime',
