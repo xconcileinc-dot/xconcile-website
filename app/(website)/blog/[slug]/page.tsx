@@ -8,7 +8,7 @@ import { ShareButtons } from "@/components/ui/ShareButtons";
 import { FAQ } from "@/components/ui/FAQ";
 import { getPostBySlug, getAllPosts, getAllPostSlugs, getBlogPage } from "@/lib/sanity/queries";
 import Link from "next/link";
-import { PortableText } from "next-sanity";
+import { PortableText } from "@/components/ui/PortableText";
 import { generateMetadata as genMeta } from "@/lib/seo";
 import { Metadata } from "next";
 import { Newsletter } from "@/components/ui/Newsletter";
@@ -39,10 +39,11 @@ export async function generateMetadata(props: {
   }
 
   return genMeta({
-    title: post.title,
-    description: post.excerpt,
+    title: post.seo?.metaTitle || post.title,
+    description: post.seo?.metaDescription || post.excerpt,
+    keywords: post.seo?.metaKeywords,
     ogType: "article",
-    ogImage: post.image,
+    ogImage: post.seo?.openGraphImage || post.image,
     author: post.author,
     slug: `/blog/${params.slug}`
   });
@@ -150,17 +151,7 @@ export default async function BlogPostPage(props: {
           <div className="max-w-7xl mx-auto">
             {/* Main Content */}
             <div className="max-w-4xl mx-auto">
-              <article
-                className="prose prose-lg max-w-none animate-fade-in-up
-                    prose-headings:font-bold prose-headings:text-neutral-900
-                    prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:scroll-mt-20
-                    prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
-                    prose-p:text-neutral-700 prose-p:leading-relaxed prose-p:text-lg prose-p:mb-6
-                    prose-a:text-primary-600 prose-a:no-underline hover:prose-a:underline
-                    prose-strong:text-neutral-900 prose-strong:font-semibold
-                    prose-ul:my-6 prose-li:my-2
-                    first:prose-p:text-xl first:prose-p:text-neutral-800 first:prose-p:leading-relaxed"
-              >
+              <article className="max-w-none animate-fade-in-up">
                 <PortableText value={post.content} />
               </article>
             </div>

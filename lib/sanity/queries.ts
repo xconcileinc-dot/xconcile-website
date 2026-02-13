@@ -34,7 +34,14 @@ export async function getPostBySlug(slug: string) {
     "image": mainImage.asset->url,
     "imageAlt": mainImage.alt,
     readTime,
-    faqs
+    faqs,
+    seo {
+      metaTitle,
+      metaDescription,
+      metaKeywords,
+      "openGraphImage": openGraphImage.asset->url,
+      "openGraphImageAlt": openGraphImage.alt
+    }
   }`
 
   return client.fetch(query, { slug })
