@@ -75,10 +75,7 @@ export const metadata: Metadata = {
     apple: "/logo-icon-refined.png",
   },
   verification: {
-    // Add your verification codes here
-    // google: "your-google-verification-code",
-    // yandex: "your-yandex-verification-code",
-    // bing: "your-bing-verification-code",
+    google: "zzIyWkg7jUhAgdRPn1TfTvBUkaG3cB5dIuXgsK4Dv9A",
   },
 };
 
@@ -92,6 +89,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
+        <meta name="google-site-verification" content="zzIyWkg7jUhAgdRPn1TfTvBUkaG3cB5dIuXgsK4Dv9A" />
         {/* Google Tag Manager - Placed directly in head for verification */}
         <script
           id="gtm-script"
