@@ -31,7 +31,7 @@ export async function getPostBySlug(slug: string) {
     "date": publishedAt,
     author,
     authorRole,
-    "image": mainImage.asset->url,
+    "image": mainImage.asset->url + "?updated=" + mainImage.asset->_updatedAt,
     "imageAlt": mainImage.alt,
     readTime,
     faqs,
@@ -39,7 +39,7 @@ export async function getPostBySlug(slug: string) {
       metaTitle,
       metaDescription,
       metaKeywords,
-      "openGraphImage": openGraphImage.asset->url,
+      "openGraphImage": openGraphImage.asset->url + "?updated=" + openGraphImage.asset->_updatedAt,
       "openGraphImageAlt": openGraphImage.alt
     }
   }`
