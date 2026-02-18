@@ -448,7 +448,7 @@ export default async function HomePage() {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <Card hover className="h-full overflow-hidden">
-                  <div className="relative h-48 mb-4 -m-6 mb-4">
+                  <div className="relative aspect-video mb-4 -m-6">
                     <Image
                       src={post.image}
                       alt={post.imageAlt || post.title}

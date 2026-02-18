@@ -149,7 +149,7 @@ export default async function BlogPostPage(props: {
         <Section background="white" spacing="sm">
           <Container>
             <div className="max-w-4xl mx-auto">
-              <div className="relative h-96 md:h-[32rem] lg:h-[36rem] rounded-2xl overflow-hidden shadow-xl -mt-16 mb-6 animate-fade-in-up">
+              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl -mt-16 mb-6 animate-fade-in-up">
                 <Image
                   src={post.image}
                   alt={post.imageAlt || post.title}
@@ -198,7 +198,7 @@ export default async function BlogPostPage(props: {
                   >
                     <div className="bg-white rounded-lg border border-neutral-200 overflow-hidden hover:shadow-lg transition-shadow">
                       {relatedPost.image && (
-                        <div className="relative h-48 w-full overflow-hidden">
+                        <div className="relative aspect-video w-full overflow-hidden">
                           <Image
                             src={relatedPost.image}
                             alt={relatedPost.imageAlt || relatedPost.title}

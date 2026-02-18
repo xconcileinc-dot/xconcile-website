@@ -93,7 +93,7 @@ export function ResourcesClient({ blogPosts, categories, title, description, new
                             <Link href={`/blog/${featuredPost.slug}`}>
                                 <Card hover className="overflow-hidden group cursor-pointer">
                                     <div className="grid md:grid-cols-2 gap-8">
-                                        <div className="relative h-64 md:h-full min-h-[18.75rem]">
+                                        <div className="relative aspect-video">
                                             <Image
                                                 src={featuredPost.image}
                                                 alt={featuredPost.imageAlt || featuredPost.title}
@@ -148,7 +148,7 @@ export function ResourcesClient({ blogPosts, categories, title, description, new
                                     style={{ animationDelay: `${index * 0.1}s` }}
                                 >
                                     <Card hover className="h-full overflow-hidden transform hover:scale-[1.02] transition-all duration-300">
-                                        <div className="relative h-48 mb-4 -m-6 mb-4 overflow-hidden">
+                                        <div className="relative aspect-video mb-4 -m-6 overflow-hidden">
                                             <Image
                                                 src={post.image}
                                                 alt={post.imageAlt || post.title}
