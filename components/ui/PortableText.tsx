@@ -51,7 +51,7 @@ const components = {
                     href={value?.href}
                     target={target}
                     rel={target === '_blank' ? 'noopener noreferrer' : undefined}
-                    className="text-primary-600 hover:text-primary-700 underline decoration-primary-200 hover:decoration-primary-600 transition-colors"
+                    className="text-blue-600 hover:text-blue-700 underline decoration-blue-300 hover:decoration-blue-600 transition-colors"
                 >
                     {children}
                 </a>
