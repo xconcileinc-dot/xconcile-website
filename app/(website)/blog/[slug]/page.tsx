@@ -149,12 +149,12 @@ export default async function BlogPostPage(props: {
         <Section background="white" spacing="sm">
           <Container>
             <div className="max-w-4xl mx-auto">
-              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl -mt-16 mb-6 animate-fade-in-up">
+              <div className="relative w-full h-[500px] rounded-2xl overflow-hidden shadow-xl -mt-16 mb-6">
                 <Image
                   src={post.image}
                   alt={post.imageAlt || post.title}
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                   priority
                 />
               </div>
