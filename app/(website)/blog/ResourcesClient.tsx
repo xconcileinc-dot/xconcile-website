@@ -147,13 +147,13 @@ export function ResourcesClient({ blogPosts, categories, title, description, new
                                     className="animate-fade-in-up group"
                                     style={{ animationDelay: `${index * 0.1}s` }}
                                 >
-                                    <Card hover className="relative aspect-video mb-4 -m-6 overflow-hidden">
+                                    <Card hover className="h-full overflow-hidden transform hover:scale-[1.02] transition-all duration-300">
                                         <div className="relative aspect-video mb-4 -m-6 overflow-hidden">
                                             <Image
                                                 src={post.image}
                                                 alt={post.imageAlt || post.title}
                                                 fill
-                                                className="object-cover object-top group-hover:scale-110 transition-transform duration-500"
+                                                className="object-contain w-full h-auto group-hover:scale-110 transition-transform duration-500"
                                             />
                                         </div>
                                         <div className="p-6 pt-0">
