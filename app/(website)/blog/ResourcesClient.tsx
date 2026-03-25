@@ -94,46 +94,46 @@ export function ResourcesClient({ blogPosts, categories, title, description, new
                                 <Card hover className="overflow-hidden group cursor-pointer">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
   
-  {/* Image */}
-  <div className="relative w-full aspect-video md:h-full md:min-h-[350px] overflow-hidden rounded-2xl overflow-hidden rounded-2xl">
-    <Image
-      src={featuredPost.image}
-      alt={featuredPost.imageAlt || featuredPost.title}
-      fill
-      className="object-cover object-top md:object-center group-hover:scale-105 transition-transform duration-500"
-    />
+                                        {/* Image */}
+                                        <div className="relative w-full aspect-video md:h-full md:min-h-[350px] overflow-hidden rounded-2xl overflow-hidden rounded-2xl">
+                                            <Image
+                                            src={featuredPost.image}
+                                            alt={featuredPost.imageAlt || featuredPost.title}
+                                            fill
+                                            className="object-cover object-top md:object-center group-hover:scale-105 transition-transform duration-500"
+                                            />
 
-    {/* Badge */}
-    <div className="absolute top-4 left-4">
-      <span className="px-4 py-2 bg-secondary-500 text-white rounded-full text-sm font-bold shadow-lg">
-        Featured
-      </span>
-    </div>
-  </div>
+                                            {/* Badge */}
+                                            <div className="absolute top-4 left-4">
+                                            <span className="px-4 py-2 bg-secondary-500 text-white rounded-full text-sm font-bold shadow-lg">
+                                                Featured
+                                            </span>
+                                            </div>
+                                        </div>
 
-  {/* Content */}
-  <div className="p-4 md:p-6 flex flex-col justify-center">
-    <div className="flex items-center gap-3 mb-3 text-sm text-neutral-500">
-      <span>{featuredPost.date}</span>
-      <span>•</span>
-      <span>{featuredPost.readTime}</span>
-    </div>
+                                            {/* Content */}
+                                            <div className="p-4 md:p-6 flex flex-col justify-center">
+                                                <div className="flex items-center gap-3 mb-3 text-sm text-neutral-500">
+                                                <span>{featuredPost.date}</span>
+                                                <span>•</span>
+                                                <span>{featuredPost.readTime}</span>
+                                                </div>
 
-    <h2 className="text-2xl md:text-4xl font-bold text-neutral-900 mb-4 group-hover:text-primary-600 transition-colors">
-      {featuredPost.title}
-    </h2>
+                                                <h2 className="text-2xl md:text-4xl font-bold line-clamp-4 text-neutral-900 mb-4 group-hover:text-primary-600 transition-colors">
+                                                {featuredPost.title}
+                                                </h2>
 
-    <p className="text-neutral-600 mb-6 line-clamp-3 md:line-clamp-4">
-      {featuredPost.excerpt}
-    </p>
+                                                <p className="text-neutral-600 mb-6 line-clamp-3 md:line-clamp-4">
+                                                {featuredPost.excerpt}
+                                                </p>
 
-    <div className="flex justify-end">
-      <span className="text-primary-600 font-semibold inline-flex items-center gap-2">
-        Read More
-      </span>
-    </div>
-  </div>
-</div>
+                                                <div className="flex justify-end">
+                                                <span className="text-primary-600 font-semibold inline-flex items-center gap-2">
+                                                    Read More
+                                                </span>
+                                                </div>
+                                            </div>  
+                                    </div>
                                 </Card>
                             </Link>
                         </div>
