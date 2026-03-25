@@ -35,7 +35,7 @@ const components = {
         ),
     },
     marks: {
-        strong: ({ children }: any) => <strong className="font-semibold text-neutral-900">{children}</strong>,
+        strong: ({ children }: any) => <strong className="font-semibold">{children}</strong>,
         em: ({ children }: any) => <em className="italic">{children}</em>,
         code: ({ children }: any) => (
             <code className="bg-neutral-100 text-primary-700 px-1.5 py-0.5 rounded text-sm font-mono border border-neutral-200">
