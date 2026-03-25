@@ -62,7 +62,7 @@ export function ResourcesClient({
             className="mb-6 text-primary-200"
           />
 
-          <div className="max-w-4xl mx-auto text-center">
+          {/* <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
               {title || "Blog & Insights"}
             </h1>
@@ -71,7 +71,15 @@ export function ResourcesClient({
               {description ||
                 "Explore articles, guides, and insights to grow your business."}
             </p>
-          </div>
+          </div> */}
+          <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
+                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-white leading-tight">
+                            {title || "Blog & Insights"}
+                        </h1>
+                        <p className="text-lg md:text-xl text-primary-100 mb-10 max-w-3xl mx-auto leading-relaxed">
+                            {description || "Explore our collection of articles, guides, and insights to help your business succeed. Expert advice, best practices, and industry trends."}
+                        </p>
+                    </div>
         </Container>
       </Section>
 
