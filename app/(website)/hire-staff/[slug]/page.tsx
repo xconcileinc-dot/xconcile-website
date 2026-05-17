@@ -14,6 +14,7 @@ import { FAQ } from "@/components/ui/FAQ";
 import { TestimonialSlider } from "@/components/ui/TestimonialSlider";
 import { ExperienceCards } from "@/components/ui/ExperienceCards";
 import { SoftwareGrid } from "@/components/ui/SoftwareGrid";
+import { ServiceInquiryForm } from "@/components/services/ServiceInquiryForm";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
@@ -365,35 +366,8 @@ export default async function HireStaffPage({ params }: PageProps) {
         </Container>
       </Section>
 
-      {/* 8. CTA Section */}
-      <Section
-        background="primary"
-        spacing="xl"
-        className="bg-secondary-600 text-white text-center relative overflow-hidden py-20 md:py-28"
-      >
-        <div className="absolute inset-0 bg-primary-900/20"></div>
-        <Container className="relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white leading-[1.1] tracking-tight">
-              {position.finalCTA?.title || `Ready to Upgrade Your ${position.title}?`}
-            </h2>
-            <p className="text-lg md:text-xl mb-10 text-white/95 leading-relaxed font-medium">
-              {position.finalCTA?.description || "Join elite businesses that trust our experts with their growth. Schedule your strategy session today."}
-            </p>
-            <div className="flex justify-center">
-              <Link href={position.finalCTA?.cta?.link || "/contact"}>
-                <Button
-                  variant={position.finalCTA?.cta?.variant || "secondary"}
-                  size="lg"
-                  className="bg-white text-secondary-600 hover:bg-neutral-100 px-10 py-4 text-lg font-bold shadow-2xl rounded-2xl transform hover:scale-105 transition-all border-2 border-transparent"
-                >
-                  {position.finalCTA?.cta?.text || "Get Started Today"}
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </Container>
-      </Section>
+      {/* 8. Contact Form */}
+      <ServiceInquiryForm serviceSlug="other" serviceTitle={position.title} />
     </>
   );
 }

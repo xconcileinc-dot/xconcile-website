@@ -4,6 +4,7 @@ import { Container } from "@/components/layout/Container"
 import { Section } from "@/components/layout/Section"
 import { getAllTeamMembers } from "@/lib/sanity/teamQueries"
 import { generateMetadata as genMeta } from "@/lib/seo"
+import { ServiceInquiryForm } from "@/components/services/ServiceInquiryForm"
 
 // Enable ISR
 export const revalidate = 60
@@ -202,32 +203,8 @@ export default async function TeamPage() {
                 </Container>
             </Section>
 
-            {/* CTA Section */}
-            <Section
-                background="primary"
-                spacing="lg"
-                className="bg-gradient-to-r from-primary-700 to-primary-800"
-            >
-                <Container>
-                    <div className="max-w-3xl mx-auto text-center">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-                            Want to Join Our Team?
-                        </h2>
-                        <p className="text-xl mb-8 text-primary-100 leading-relaxed">
-                            We're always looking for talented professionals to join our growing team.
-                            If you're passionate about what you do and want to make an impact, we'd love to hear from you.
-                        </p>
-                        <div className="flex justify-center gap-4">
-                            <a
-                                href="/contact"
-                                className="inline-flex items-center justify-center px-8 py-3 font-medium rounded-lg bg-white text-primary-700 hover:bg-primary-50 border-2 border-transparent transition-all duration-200 shadow-md hover:shadow-lg"
-                            >
-                                Get in Touch
-                            </a>
-                        </div>
-                    </div>
-                </Container>
-            </Section>
+            {/* Contact Form */}
+            <ServiceInquiryForm serviceSlug="other" serviceTitle="Our Team" />
         </>
     )
 }

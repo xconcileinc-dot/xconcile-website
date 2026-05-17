@@ -33,7 +33,7 @@ export function ContactForm({ data }: { data: any }) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({ ...formData, pageUrl: window.location.href }),
             });
 
             const data = await response.json();

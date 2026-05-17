@@ -8,6 +8,7 @@ import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import Link from "next/link";
 import { getAboutPage } from "@/lib/sanity/queries";
 import * as LucideIcons from "lucide-react";
+import { ServiceInquiryForm } from "@/components/services/ServiceInquiryForm";
 
 // Enable ISR
 export const revalidate = 60;
@@ -223,34 +224,8 @@ export default async function AboutPage() {
         </Container>
       </Section>
 
-      {/* CTA Section */}
-      <Section
-        background="primary"
-        spacing="lg"
-        className="bg-gradient-to-r from-primary-700 to-primary-800"
-      >
-        <Container>
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-              {data.finalCTA?.title || "Ready to Work With Us?"}
-            </h2>
-            <p className="text-xl mb-8 text-primary-100 leading-relaxed">
-              {data.finalCTA?.description || "Get in touch today and discover how we can help your business succeed."}
-            </p>
-            <div className="flex justify-center">
-              <Link href={data.finalCTA?.cta?.link || "/contact"}>
-                <Button
-                  variant={data.finalCTA?.cta?.variant || "secondary"}
-                  size="lg"
-                  className="bg-white text-primary-700 hover:bg-primary-50"
-                >
-                  {data.finalCTA?.cta?.text || "Contact Us"}
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </Container>
-      </Section>
+      {/* Contact Form */}
+      <ServiceInquiryForm serviceSlug="other" serviceTitle="Our Services" />
     </>
   );
 }
