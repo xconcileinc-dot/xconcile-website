@@ -1,13 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@sanity/client'
 import { apiVersion, dataset, projectId } from '@/lib/sanity/env'
+import { transporter } from '@/lib/mailer'
+import { buildAdminEmail } from '@/lib/emails/adminEmail'
+import { buildCustomerEmail } from '@/lib/emails/customerEmail'
 
 export async function POST(req: NextRequest) {
     try {
         const body = await req.json()
         const { name, email, phone, company, service, message } = body
 
-        // Basic server-side validation
         if (!name || !email || !message) {
             return NextResponse.json(
                 { error: 'Name, Email, and Message are required fields.' },
@@ -16,7 +18,6 @@ export async function POST(req: NextRequest) {
         }
 
         const token = process.env.SANITY_API_TOKEN
-
         if (!token) {
             console.error('Missing SANITY_API_TOKEN')
             return NextResponse.json(
@@ -25,27 +26,66 @@ export async function POST(req: NextRequest) {
             )
         }
 
+        const submittedAt = new Date().toISOString()
+
+        // Save to Sanity
         const client = createClient({
             projectId,
             dataset,
             apiVersion,
-            token, // Write token is required
+            token,
             useCdn: false,
         })
 
-        const doc = {
-            _type: 'contactSubmission',
-            name,
-            email,
-            phone,
-            company,
-            service,
-            message,
-            status: 'new',
-            submittedAt: new Date().toISOString(),
+        try {
+            await client.create({
+                _type: 'contactSubmission',
+                name,
+                email,
+                phone,
+                company,
+                service,
+                message,
+                status: 'new',
+                submittedAt,
+            })
+        } catch (sanityError) {
+            console.error('Sanity save failed:', sanityError)
         }
 
-        await client.create(doc)
+        const adminEmail = process.env.ADMIN_EMAIL
+        const smtpUser = process.env.SMTP_USER
+
+        if (adminEmail && smtpUser) {
+            const { subject: adminSubject, html: adminHtml } = buildAdminEmail({
+                name, email, phone, company, service, message, submittedAt,
+            })
+
+            const { subject: customerSubject, html: customerHtml } = buildCustomerEmail({
+                name, email, service, message,
+            })
+
+            try {
+                await Promise.all([
+                    transporter.sendMail({
+                        from: `"xConcile" <${smtpUser}>`,
+                        to: adminEmail,
+                        subject: adminSubject,
+                        html: adminHtml,
+                    }),
+                    transporter.sendMail({
+                        from: `"xConcile" <${smtpUser}>`,
+                        to: email,
+                        subject: customerSubject,
+                        html: customerHtml,
+                    }),
+                ])
+            } catch (emailError) {
+                console.error('Email sending failed:', emailError)
+            }
+        } else {
+            console.warn('Email not sent: ADMIN_EMAIL or SMTP_USER is missing from environment variables.')
+        }
 
         return NextResponse.json({ success: true, message: 'Message sent successfully!' })
 
