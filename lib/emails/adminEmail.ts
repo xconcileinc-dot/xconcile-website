@@ -6,6 +6,7 @@ interface AdminEmailProps {
     service?: string
     message: string
     submittedAt: string
+    pageUrl?: string
 }
 
 const SERVICE_LABELS: Record<string, string> = {
@@ -82,6 +83,7 @@ export function buildAdminEmail(data: AdminEmailProps): { subject: string; html:
                 ${data.phone ? row('Phone', data.phone) : ''}
                 ${data.company ? row('Company', data.company) : ''}
                 ${row('Service Interest', serviceLabel)}
+                ${data.pageUrl ? row('Page', `<a href="${data.pageUrl}" style="color:#1c7185;text-decoration:none;">${new URL(data.pageUrl).pathname}</a>`) : ''}
               </table>
 
               <!-- Message -->

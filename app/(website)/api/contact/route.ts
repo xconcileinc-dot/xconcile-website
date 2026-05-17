@@ -8,7 +8,7 @@ import { buildCustomerEmail } from '@/lib/emails/customerEmail'
 export async function POST(req: NextRequest) {
     try {
         const body = await req.json()
-        const { name, email, phone, company, service, message } = body
+        const { name, email, phone, company, service, message, pageUrl } = body
 
         if (!name || !email || !message) {
             return NextResponse.json(
@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
 
         if (adminEmail && smtpUser) {
             const { subject: adminSubject, html: adminHtml } = buildAdminEmail({
-                name, email, phone, company, service, message, submittedAt,
+                name, email, phone, company, service, message, submittedAt, pageUrl,
             })
 
             const { subject: customerSubject, html: customerHtml } = buildCustomerEmail({
