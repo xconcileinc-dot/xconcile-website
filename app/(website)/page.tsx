@@ -13,6 +13,7 @@ import Link from "next/link";
 import { getHomePage, getAllPosts } from "@/lib/sanity/queries";
 import { client } from "@/lib/sanity/client";
 import { BlogPost, getAllBlogPosts as getStaticPosts, blogPosts } from "@/lib/blog";
+import { ServiceInquiryForm } from "@/components/services/ServiceInquiryForm";
 
 // Enable ISR
 export const revalidate = 60;
@@ -496,34 +497,8 @@ export default async function HomePage() {
         </Container>
       </Section>
 
-      {/* CTA Section */}
-      <Section
-        background="primary"
-        spacing="lg"
-        className="bg-gradient-to-r from-primary-700 to-primary-800"
-      >
-        <Container>
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-              {data.finalCTA?.title || "Ready to Get Started?"}
-            </h2>
-            <p className="text-xl mb-8 text-primary-100 leading-relaxed">
-              {data.finalCTA?.description || "Join thousands of businesses that trust us with their operations. Schedule a consultation today and see how we can help your business grow."}
-            </p>
-            <div className="flex justify-center">
-              <Link href={data.finalCTA?.cta?.link || "/contact"}>
-                <Button
-                  variant={data.finalCTA?.cta?.variant || "secondary"}
-                  size="lg"
-                  className="bg-white text-primary-700 hover:bg-primary-50 border-2 border-transparent"
-                >
-                  {data.finalCTA?.cta?.text || "Schedule a Call"}
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </Container>
-      </Section>
+      {/* Contact Form */}
+      <ServiceInquiryForm serviceSlug="other" serviceTitle="Your Business" />
     </>
   );
 }

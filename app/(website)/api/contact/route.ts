@@ -3,7 +3,6 @@ import { createClient } from '@sanity/client'
 import { apiVersion, dataset, projectId } from '@/lib/sanity/env'
 import { transporter } from '@/lib/mailer'
 import { buildAdminEmail } from '@/lib/emails/adminEmail'
-import { buildCustomerEmail } from '@/lib/emails/customerEmail'
 
 export async function POST(req: NextRequest) {
     try {
@@ -61,25 +60,13 @@ export async function POST(req: NextRequest) {
                 name, email, phone, company, service, message, submittedAt, pageUrl,
             })
 
-            const { subject: customerSubject, html: customerHtml } = buildCustomerEmail({
-                name, email, service, message,
-            })
-
             try {
-                await Promise.all([
-                    transporter.sendMail({
-                        from: `"xConcile" <${smtpUser}>`,
-                        to: adminEmail,
-                        subject: adminSubject,
-                        html: adminHtml,
-                    }),
-                    transporter.sendMail({
-                        from: `"xConcile" <${smtpUser}>`,
-                        to: email,
-                        subject: customerSubject,
-                        html: customerHtml,
-                    }),
-                ])
+                await transporter.sendMail({
+                    from: `"xConcile" <${smtpUser}>`,
+                    to: adminEmail,
+                    subject: adminSubject,
+                    html: adminHtml,
+                })
             } catch (emailError) {
                 console.error('Email sending failed:', emailError)
             }
