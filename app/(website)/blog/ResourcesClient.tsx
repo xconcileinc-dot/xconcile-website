@@ -100,7 +100,7 @@ export function ResourcesClient({ blogPosts, categories, title, description, new
                                             src={featuredPost.image}
                                             alt={featuredPost.imageAlt || featuredPost.title}
                                             fill
-                                            className="object-cover object-top md:object-center group-hover:scale-105 transition-transform duration-500"
+                                            className="object-contain"
                                             />
 
                                             {/* Badge */}
@@ -159,7 +159,7 @@ export function ResourcesClient({ blogPosts, categories, title, description, new
                                                 src={post.image}
                                                 alt={post.imageAlt || post.title}
                                                 fill
-                                                className="object-cover object-top sm:object-center group-hover:scale-105 transition-transform duration-500"
+                                                className="object-contain"
                                             />
                                         </div>
                                         <div className="p-6 pt-0">
