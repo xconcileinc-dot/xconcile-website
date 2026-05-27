@@ -69,7 +69,7 @@ export async function Footer() {
     <footer className="bg-neutral-900 text-neutral-300">
       <Container>
         {/* Main Footer Content */}
-        <div className="py-12 md:py-16">
+        <div className="py-8 md:py-16">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
             {/* Company Info & Social */}
             <div className="col-span-2 md:col-span-1">
