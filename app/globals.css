@@ -204,7 +204,7 @@
 
   /* Section */
   .section {
-    @apply py-8;
+    @apply py-4;
     @apply md:py-12;
     @apply lg:py-16;
     @apply xl:py-20;
