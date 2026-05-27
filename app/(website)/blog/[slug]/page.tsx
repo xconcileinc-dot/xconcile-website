@@ -149,12 +149,12 @@ export default async function BlogPostPage(props: {
         <Section background="white" spacing="sm">
           <Container>
             <div className="max-w-4xl mx-auto">
-              <div className="relative aspect-[4/3] sm:aspect-video rounded-2xl overflow-hidden shadow-xl -mt-16 mb-6 animate-fade-in-up">
+              <div className="relative aspect-[4/3] sm:aspect-video rounded-2xl overflow-hidden -mt-16 mb-6 animate-fade-in-up">
                 <Image
                   src={post.image}
                   alt={post.imageAlt || post.title}
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   priority
                 />
               </div>
@@ -203,7 +203,7 @@ export default async function BlogPostPage(props: {
                             src={relatedPost.image}
                             alt={relatedPost.imageAlt || relatedPost.title}
                             fill
-                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                            className="object-contain"
                           />
                         </div>
                       )}
