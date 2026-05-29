@@ -171,7 +171,7 @@ export const MobileMenu: React.FC<{
           <div className="flex items-center justify-between p-4 border-b border-neutral-200">
             <Link href="/" className="relative h-8 w-32" onClick={onClose}>
               <Image
-                src="/logo-horizontal.png"
+                src="/logo_autocropped.png"
                 alt="Xconcile"
                 fill
                 className="object-contain object-left"
