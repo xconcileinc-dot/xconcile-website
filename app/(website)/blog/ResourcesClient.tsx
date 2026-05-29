@@ -95,12 +95,11 @@ export function ResourcesClient({ blogPosts, categories, title, description, new
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
   
                                         {/* Image */}
-                                        <div className="relative w-full aspect-video md:h-full md:min-h-[350px] overflow-hidden rounded-2xl overflow-hidden rounded-2xl">
+                                        <div className="relative w-full aspect-[1.55] md:h-full md:min-h-[350px] overflow-hidden rounded-2xl overflow-hidden rounded-2xl">
                                             <Image
                                             src={featuredPost.image}
                                             alt={featuredPost.imageAlt || featuredPost.title}
                                             fill
-                                            className="object-contain"
                                             />
 
                                             {/* Badge */}
@@ -154,12 +153,11 @@ export function ResourcesClient({ blogPosts, categories, title, description, new
                                     style={{ animationDelay: `${index * 0.1}s` }}
                                 >
                                     <Card hover className="h-full overflow-hidden transform hover:scale-[1.02] transition-all duration-300">
-                                        <div className="relative aspect-video mb-4 -m-6 overflow-hidden">
+                                        <div className="relative aspect-[1.55] mb-4 -m-6 overflow-hidden">
                                             <Image
                                                 src={post.image}
                                                 alt={post.imageAlt || post.title}
                                                 fill
-                                                className="object-contain"
                                             />
                                         </div>
                                         <div className="p-6 pt-0">

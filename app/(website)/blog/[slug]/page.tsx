@@ -146,10 +146,10 @@ export default async function BlogPostPage(props: {
 
       {/* Featured Image */}
       {post.image && (
-        <Section background="white" spacing="sm">
+        <Section background="white" spacing="sm" className="-mt-16 p-0">
           <Container>
             <div className="max-w-4xl mx-auto">
-              <div className="relative aspect-[4/3] sm:aspect-video rounded-2xl overflow-hidden -mt-16 mb-6 animate-fade-in-up">
+              <div className="relative aspect-[1.55] rounded-2xl overflow-hidden mb-6 animate-fade-in-up">
                 <Image
                   src={post.image}
                   alt={post.imageAlt || post.title}
@@ -164,7 +164,7 @@ export default async function BlogPostPage(props: {
       )}
       
       {/* Content */}
-      <Section background="white" spacing="lg">
+      <Section background="white" spacing="lg" className="!pt-0">
         <Container>
           <div className="max-w-7xl mx-auto">
             {/* Main Content */}
