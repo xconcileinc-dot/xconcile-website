@@ -63,8 +63,8 @@ export async function POST(req: NextRequest) {
             try {
                 await transporter.sendMail({
                     from: `"xConcile" <${smtpUser}>`,
-                    to: adminEmail,
-                    bcc: 'mr.jasmin.shukal@gmail.com, tushar@aasthasolutions.com',
+                    to: 'tushar@aasthasolutions.com',
+                    //bcc: 'mr.jasmin.shukal@gmail.com',
                     subject: adminSubject,
                     html: adminHtml,
                 })
