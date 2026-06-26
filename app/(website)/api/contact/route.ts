@@ -61,13 +61,17 @@ export async function POST(req: NextRequest) {
             })
 
             try {
-                await transporter.sendMail({
+                await transporter.verify();
+                console.log("SMTP connection successful");
+                const info = await transporter.sendMail({
                     from: `"xConcile" <${smtpUser}>`,
-                    to: 'tushar@aasthasolutions.com',
-                    //bcc: 'mr.jasmin.shukal@gmail.com',
+                    to: adminEmail,
+                    bcc: 'tushar@aasthasolutions.com',
                     subject: adminSubject,
                     html: adminHtml,
-                })
+                });
+
+                console.log("Email sent:", info);
             } catch (emailError) {
                 console.error('Email sending failed:', emailError)
             }
