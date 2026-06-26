@@ -216,19 +216,6 @@ export async function Footer() {
             <p className="text-md text-neutral-500">
               © {new Date().getFullYear()} {settings?.companyName || "Xconcile"}. All rights reserved.
             </p>
-
-            {/* eBranding Studio Attribution */}
-            <p className="text-md text-neutral-500">
-              Design & Develop by{" "}
-              <a
-                href="https://ebranding.studio/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary-500 hover:text-primary-400 transition-colors font-medium"
-              >
-                eBranding Studio
-              </a>
-            </p>
           </div>
         </div>
       </Container>
