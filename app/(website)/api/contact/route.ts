@@ -61,31 +61,23 @@ export async function POST(req: NextRequest) {
             })
 
             try {
-                await transporter.verify();
-                console.log("SMTP connection successful");
-                const info = await transporter.sendMail({
-                    from: `"xConcile" <${smtpUser}>`,
-                    to: adminEmail,
-                    bcc: 'tushar@aasthasolutions.com',
-                    subject: adminSubject,
-                    html: adminHtml,
-                });
+    await transporter.sendMail({
+        from: `"xConcile" <${smtpUser}>`,
+        to: adminEmail,
+        subject: adminSubject,
+        html: adminHtml,
+    });
+} catch (emailError) {
+    console.error("Email sending failed:", emailError);
 
-                console.log("Email sent:", info);
-            } catch (emailError) {
-                console.error('Email sending failed:', emailError)
-            }
-        } else {
-            console.warn('Email not sent: ADMIN_EMAIL or SMTP_USER is missing from environment variables.')
+    return NextResponse.json(
+        {
+            success: false,
+            error: "Unable to send email.",
+        },
+        {
+            status: 500,
         }
-
-        return NextResponse.json({ success: true, message: 'Message sent successfully!' })
-
-    } catch (error) {
-        console.error('Error submitting contact form:', error)
-        return NextResponse.json(
-            { error: 'Failed to submit message. Please try again later.' },
-            { status: 500 }
-        )
-    }
+    );
+}
 }
