@@ -3,6 +3,8 @@ import { createClient } from '@sanity/client'
 import { apiVersion, dataset, projectId } from '@/lib/sanity/env'
 import { transporter } from '@/lib/mailer'
 import { buildAdminEmail } from '@/lib/emails/adminEmail'
+import { sendMail } from "@/lib/sendMail";
+
 
 export async function POST(req: NextRequest) {
     try {
@@ -53,21 +55,19 @@ export async function POST(req: NextRequest) {
         }
 
         const adminEmail = process.env.ADMIN_EMAIL
-        const smtpUser = process.env.SMTP_USER
+        const graphMailbox = process.env.GRAPH_MAILBOX;
 
-        if (adminEmail && smtpUser) {
+        if (!graphMailbox) {
+            throw new Error("GRAPH_MAILBOX environment variable is missing");
+        }
+
+        if (adminEmail) {
             const { subject: adminSubject, html: adminHtml } = buildAdminEmail({
                 name, email, phone, company, service, message, submittedAt, pageUrl,
             })
 
             try {
-                await transporter.sendMail({
-                    from: `"xConcile" <${smtpUser}>`,
-                    to: adminEmail,
-                    bcc: 'tushar@aasthasolutions.com',
-                    subject: adminSubject,
-                    html: adminHtml,
-                })
+                await sendMail(adminSubject, adminHtml);
             } catch (emailError) {
                 console.error('Email sending failed:', emailError)
             }
