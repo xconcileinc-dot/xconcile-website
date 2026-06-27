@@ -345,13 +345,13 @@ export const Header: React.FC = () => {
 
             {/* CTA Button & Mobile Menu */}
             <div className="flex items-center gap-4">
-              <Link href="/contact" className="hidden md:inline-flex">
+              <Link href="/meeting" className="hidden md:inline-flex">
                 <Button
                   variant="primary"
                   size="md"
-                  className="bg-secondary-600 hover:bg-secondary-700 w-48"
+                  className="bg-secondary-600 hover:bg-secondary-700"
                 >
-                  Schedule a Call
+                  Schedule a Meeting
                 </Button>
               </Link>
 
