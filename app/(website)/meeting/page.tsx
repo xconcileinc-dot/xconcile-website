@@ -6,7 +6,7 @@ export default function Schedule() {
   return (
     <div style={{ height: "700px" }}>
       <InlineWidget
-        url="https://calendly.com/xconcile/30min"
+        url={process.env.NEXT_PUBLIC_CALENDLY_URL!}
       />
     </div>
   );
