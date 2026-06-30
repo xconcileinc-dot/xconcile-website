@@ -123,27 +123,8 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <SpeedInsights />
-
-        <Script
-          id="zoho-salesiq"
-          strategy="afterInteractive"
-        >{`
-        var $zoho = $zoho || {};
-        $zoho.salesiq = $zoho.salesiq || {
-            widgetcode: "YOUR_WIDGET_CODE",
-            values: {},
-            ready: function() {}
-        };
-
-        var d = document;
-        var s = d.createElement("script");
-        s.type = "text/javascript";
-        s.id = "zsiqscript";
-        s.defer = true;
-        s.src = "https://salesiq.zohopublic.com/widget";
-        var t = d.getElementsByTagName("script")[0];
-        t.parentNode.insertBefore(s, t);
-        `}</Script>
+        {/* Zoho chatbot */}
+        <script>{'window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}'}</script><script id="zsiqscript" src="https://salesiq.zohopublic.in/widget?wc=siq8a0dcfe4029b2bfa13fa6838399d6a0aa78afa63c2632cef8ededcc2ea45caec" defer></script> 
       </body>
     </html>
   );
