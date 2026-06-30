@@ -95,10 +95,10 @@ export default function RootLayout({
           id="gtm-script"
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WRRFT9ZZ');`,
+                  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                  })(window,document,'script','dataLayer','GTM-WRRFT9ZZ');`,
           }}
         />
         <script
@@ -123,6 +123,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <main className="flex-1">{children}</main>
         <Footer />
         <SpeedInsights />
+
+        <Script
+          id="zoho-salesiq"
+          strategy="afterInteractive"
+        >{`
+        var $zoho = $zoho || {};
+        $zoho.salesiq = $zoho.salesiq || {
+            widgetcode: "YOUR_WIDGET_CODE",
+            values: {},
+            ready: function() {}
+        };
+
+        var d = document;
+        var s = d.createElement("script");
+        s.type = "text/javascript";
+        s.id = "zsiqscript";
+        s.defer = true;
+        s.src = "https://salesiq.zohopublic.com/widget";
+        var t = d.getElementsByTagName("script")[0];
+        t.parentNode.insertBefore(s, t);
+        `}</Script>
       </body>
     </html>
   );

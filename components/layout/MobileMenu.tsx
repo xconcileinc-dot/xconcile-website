@@ -276,18 +276,6 @@ export const MobileMenu: React.FC<{
                 </Button>
               </Link>
             </div>
-            <div className="p-4 border-t border-neutral-200">
-            <Button
-              variant="primary"
-              className="w-full bg-secondary-600 hover:bg-secondary-700"
-              onClick={() => {
-                onClose();
-                // Handle schedule call action
-              }}
-            >
-              Schedule a Call
-            </Button>
-          </div>
         </div>
       </div>
     </>
