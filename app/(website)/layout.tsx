@@ -124,7 +124,20 @@ export default function RootLayout({
         <Footer />
         <SpeedInsights />
         {/* Zoho chatbot */}
-        <script>{'window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}'}</script><script id="zsiqscript" src="https://salesiq.zohopublic.in/widget?wc=siq8a0dcfe4029b2bfa13fa6838399d6a0aa78afa63c2632cef8ededcc2ea45caec" defer></script> 
+        <Script id="zoho-salesiq-init" strategy="afterInteractive">
+        {`
+          window.$zoho = window.$zoho || {};
+          window.$zoho.salesiq = window.$zoho.salesiq || {
+            ready: function() {}
+          };
+        `}
+      </Script>
+
+      <Script
+        id="zoho-salesiq-widget"
+        src="https://salesiq.zohopublic.in/widget?wc=siq8a0dcfe4029b2bfa13fa6838399d6a0aa78afa63c2632cef8ededcc2ea45caec"
+        strategy="afterInteractive"
+      />
       </body>
     </html>
   );
