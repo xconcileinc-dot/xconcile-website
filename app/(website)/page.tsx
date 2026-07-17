@@ -433,7 +433,7 @@ export default async function HomePage() {
               </h2>
             </div>
             <Link
-              href="/resources"
+              href="/blog"
               className="hidden md:block text-primary-600 font-semibold hover:text-primary-700 transition-colors"
             >
               View All →
@@ -481,7 +481,7 @@ export default async function HomePage() {
 
           <div className="text-center mt-8 md:hidden">
             <Link
-              href="/resources"
+              href="/blog"
               className="text-primary-600 font-semibold hover:text-primary-700 transition-colors"
             >
               View All Resources →
