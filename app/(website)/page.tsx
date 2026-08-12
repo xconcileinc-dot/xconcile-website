@@ -29,7 +29,7 @@ function getYouTubeEmbedUrl(url?: string | null) {
 
   if (hostname === "youtu.be") {
     const videoId = parsedUrl.pathname.split("/").filter(Boolean)[0];
-    return videoId ? `https://www.youtube.com/embed/${videoId}?vq=hd1080&hd=1&rel=0&playsinline=1` : null;
+    return videoId ? `https://www.youtube.com/embed/${videoId}?vq=hd1080&hd=1&rel=0&playsinline=1&enablejsapi=1` : null;
   }
 
   if (hostname === "youtube.com" || hostname === "m.youtube.com") {
@@ -45,6 +45,7 @@ function getYouTubeEmbedUrl(url?: string | null) {
     embedUrl.searchParams.set("hd", "1");
     embedUrl.searchParams.set("rel", "0");
     embedUrl.searchParams.set("playsinline", "1");
+    embedUrl.searchParams.set("enablejsapi", "1");
 
     if (parsedUrl.pathname.startsWith("/embed/")) {
       return embedUrl.toString();

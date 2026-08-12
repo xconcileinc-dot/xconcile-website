@@ -16,6 +16,19 @@ interface SuccessStoriesVideoSliderProps {
   videos: SuccessStoryVideo[];
 }
 
+const requestYouTubeHdPlayback = (iframe: HTMLIFrameElement | null) => {
+  if (!iframe?.contentWindow) return;
+
+  const commands = [
+    { event: "command", func: "setPlaybackQualityRange", args: ["hd1080"] },
+    { event: "command", func: "setPlaybackQuality", args: ["hd1080"] },
+  ];
+
+  commands.forEach((command) => {
+    iframe.contentWindow?.postMessage(JSON.stringify(command), "https://www.youtube.com");
+  });
+};
+
 export const SuccessStoriesVideoSlider: React.FC<SuccessStoriesVideoSliderProps> = ({
   videos,
 }) => {
@@ -64,6 +77,11 @@ export const SuccessStoriesVideoSlider: React.FC<SuccessStoriesVideoSliderProps>
                       title={video.videoTitle}
                       className="aspect-video w-full"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      onLoad={(event) => {
+                        const iframe = event.currentTarget;
+                        requestYouTubeHdPlayback(iframe);
+                        window.setTimeout(() => requestYouTubeHdPlayback(iframe), 1000);
+                      }}
                       allowFullScreen
                     />
                   ) : (
