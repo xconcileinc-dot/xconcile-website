@@ -404,6 +404,13 @@ export async function getHomePage() {
     testimonials,
     successStoriesTitle,
     successStoriesDescription,
+    successStoriesVideos[] {
+      title,
+      clientName,
+      videoUrl,
+      "videoFile": videoFile.asset->url,
+      videoTitle
+    },
     successStoriesVideoUrl,
     "successStoriesVideoFile": successStoriesVideoFile.asset->url,
     successStoriesVideoTitle,

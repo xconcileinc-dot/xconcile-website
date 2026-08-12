@@ -183,29 +183,98 @@ export default defineType({
             group: 'successStories',
         }),
         defineField({
+            name: 'successStoriesVideos',
+            title: 'Success Stories Videos',
+            type: 'array',
+            description: 'Add one item per client testimonial video. Existing videos stay on the website until you remove them from this list.',
+            of: [
+                {
+                    type: 'object',
+                    title: 'Testimonial Video',
+                    fields: [
+                        defineField({
+                            name: 'title',
+                            title: 'Video Title',
+                            type: 'string',
+                            initialValue: 'Client testimonial video',
+                        }),
+                        defineField({
+                            name: 'clientName',
+                            title: 'Client Name',
+                            type: 'string',
+                            description: 'Optional client name or company name shown below the video.',
+                        }),
+                        defineField({
+                            name: 'videoUrl',
+                            title: 'YouTube URL',
+                            type: 'url',
+                            description: 'Paste a YouTube link here. This takes priority over an uploaded video file.',
+                        }),
+                        defineField({
+                            name: 'videoFile',
+                            title: 'Uploaded Video',
+                            type: 'file',
+                            description: 'Optional uploaded video file. Used when no YouTube URL is provided.',
+                            options: {
+                                accept: 'video/*',
+                            },
+                        }),
+                        defineField({
+                            name: 'videoTitle',
+                            title: 'Accessible Video Title',
+                            type: 'string',
+                            description: 'Used by screen readers and browser video titles. If empty, the Video Title is used.',
+                        }),
+                    ],
+                    preview: {
+                        select: {
+                            title: 'title',
+                            subtitle: 'clientName',
+                        },
+                        prepare({ title, subtitle }) {
+                            return {
+                                title: title || 'Client testimonial video',
+                                subtitle,
+                            }
+                        },
+                    },
+                },
+            ],
+            initialValue: [
+                {
+                    title: 'Client testimonial video',
+                    clientName: '',
+                    videoUrl: 'https://youtu.be/Mu0O-qTK1jo',
+                    videoTitle: 'Client testimonial video',
+                },
+            ],
+            group: 'successStories',
+        }),
+        defineField({
             name: 'successStoriesVideoUrl',
-            title: 'Success Stories YouTube URL',
+            title: 'Legacy Success Stories YouTube URL',
             type: 'url',
-            description: 'Paste a YouTube link here. This takes priority over an uploaded video file.',
-            initialValue: 'https://youtu.be/Mu0O-qTK1jo',
+            description: 'Deprecated single-video field. Use Success Stories Videos above for new videos.',
+            hidden: true,
             group: 'successStories',
         }),
         defineField({
             name: 'successStoriesVideoFile',
-            title: 'Success Stories Uploaded Video',
+            title: 'Legacy Success Stories Uploaded Video',
             type: 'file',
-            description: 'Optional uploaded video file. Used when no YouTube URL is provided.',
+            description: 'Deprecated single-video field. Use Success Stories Videos above for new videos.',
             options: {
                 accept: 'video/*',
             },
+            hidden: true,
             group: 'successStories',
         }),
         defineField({
             name: 'successStoriesVideoTitle',
-            title: 'Video Title',
+            title: 'Legacy Video Title',
             type: 'string',
-            description: 'Accessible title for the embedded or uploaded video.',
-            initialValue: 'Client testimonial video',
+            description: 'Deprecated single-video field. Use Success Stories Videos above for new videos.',
+            hidden: true,
             group: 'successStories',
         }),
 

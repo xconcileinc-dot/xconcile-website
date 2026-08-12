@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { TestimonialSlider } from "@/components/ui/TestimonialSlider";
+import { SuccessStoriesVideoSlider, type SuccessStoryVideo } from "@/components/ui/SuccessStoriesVideoSlider";
 import { StatCard } from "@/components/ui/StatCard";
 import { FeatureCard } from "@/components/ui/FeatureCard";
 import { FAQ } from "@/components/ui/FAQ";
@@ -116,8 +117,14 @@ export default async function HomePage() {
     ],
     successStoriesTitle: "Our Success Stories",
     successStoriesDescription: "Hear What Our Clients Have to Say",
-    successStoriesVideoUrl: "https://youtu.be/Mu0O-qTK1jo",
-    successStoriesVideoTitle: "Client testimonial video",
+    successStoriesVideos: [
+      {
+        title: "Client testimonial video",
+        clientName: "",
+        videoUrl: "https://youtu.be/Mu0O-qTK1jo",
+        videoTitle: "Client testimonial video",
+      },
+    ],
     featuresTitle: "Everything You Need to Succeed",
     featuresDescription:
       "Comprehensive solutions designed to streamline your operations and drive growth.",
@@ -200,12 +207,31 @@ export default async function HomePage() {
   const successStoriesTitle = data.successStoriesTitle || staticData.successStoriesTitle;
   const successStoriesDescription =
     data.successStoriesDescription || staticData.successStoriesDescription;
-  const successStoriesVideoFile = data.successStoriesVideoFile;
-  const successStoriesVideoUrl =
-    data.successStoriesVideoUrl || (!successStoriesVideoFile ? staticData.successStoriesVideoUrl : null);
-  const successStoriesVideoTitle =
-    data.successStoriesVideoTitle || staticData.successStoriesVideoTitle;
-  const successStoriesEmbedUrl = getYouTubeEmbedUrl(successStoriesVideoUrl);
+  const legacySuccessStoriesVideos =
+    data.successStoriesVideoUrl || data.successStoriesVideoFile
+      ? [
+        {
+          title: data.successStoriesVideoTitle || "Client testimonial video",
+          clientName: "",
+          videoUrl: data.successStoriesVideoUrl,
+          videoFile: data.successStoriesVideoFile,
+          videoTitle: data.successStoriesVideoTitle || "Client testimonial video",
+        },
+      ]
+      : [];
+  const successStoriesVideosSource =
+    data.successStoriesVideos && data.successStoriesVideos.length > 0
+      ? data.successStoriesVideos
+      : legacySuccessStoriesVideos.length > 0
+        ? legacySuccessStoriesVideos
+        : staticData.successStoriesVideos;
+  const successStoriesVideos = successStoriesVideosSource
+    .map((video: any) => ({
+      ...video,
+      embedUrl: getYouTubeEmbedUrl(video.videoUrl),
+      videoTitle: video.videoTitle || video.title || video.clientName || "Client testimonial video",
+    }))
+    .filter((video: any) => video.embedUrl || video.videoFile) as SuccessStoryVideo[];
   const recentPosts =
     sanityPosts && sanityPosts.length > 0
       ? sanityPosts.slice(0, 3)
@@ -421,8 +447,8 @@ export default async function HomePage() {
         </Container>
       </Section>
 
-      {/* Client Testimonial Video */}
-      {(successStoriesEmbedUrl || successStoriesVideoFile) && (
+      {/* Client Testimonial Videos */}
+      {successStoriesVideos.length > 0 && (
         <Section background="white" spacing="lg">
           <Container>
             <div className="text-center mb-12 animate-fade-in-up">
@@ -434,24 +460,7 @@ export default async function HomePage() {
               </p>
             </div>
 
-            <div className="max-w-5xl mx-auto overflow-hidden rounded-3xl bg-neutral-950 shadow-2xl ring-1 ring-neutral-200">
-              {successStoriesEmbedUrl ? (
-                <iframe
-                  src={successStoriesEmbedUrl}
-                  title={successStoriesVideoTitle}
-                  className="aspect-video w-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                />
-              ) : (
-                <video
-                  src={successStoriesVideoFile}
-                  title={successStoriesVideoTitle}
-                  className="aspect-video w-full"
-                  controls
-                />
-              )}
-            </div>
+            <SuccessStoriesVideoSlider videos={successStoriesVideos} />
           </Container>
         </Section>
       )}
