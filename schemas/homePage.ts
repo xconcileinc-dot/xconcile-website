@@ -8,6 +8,7 @@ export default defineType({
         { name: 'hero', title: 'Hero Section' },
         { name: 'trust', title: 'Trust Indicators' },
         { name: 'testimonials', title: 'Testimonials' },
+        { name: 'successStories', title: 'Success Stories Video' },
         { name: 'features', title: 'Features' },
         { name: 'partners', title: 'Partners' },
         { name: 'blog', title: 'Blog Section' },
@@ -164,6 +165,48 @@ export default defineType({
             type: 'array',
             of: [{ type: 'testimonial' }],
             group: 'testimonials',
+        }),
+
+        // Success Stories Video
+        defineField({
+            name: 'successStoriesTitle',
+            title: 'Success Stories Title',
+            type: 'string',
+            initialValue: 'Our Success Stories',
+            group: 'successStories',
+        }),
+        defineField({
+            name: 'successStoriesDescription',
+            title: 'Success Stories Description',
+            type: 'text',
+            initialValue: 'Hear What Our Clients Have to Say',
+            group: 'successStories',
+        }),
+        defineField({
+            name: 'successStoriesVideoUrl',
+            title: 'Success Stories YouTube URL',
+            type: 'url',
+            description: 'Paste a YouTube link here. This takes priority over an uploaded video file.',
+            initialValue: 'https://youtu.be/Mu0O-qTK1jo',
+            group: 'successStories',
+        }),
+        defineField({
+            name: 'successStoriesVideoFile',
+            title: 'Success Stories Uploaded Video',
+            type: 'file',
+            description: 'Optional uploaded video file. Used when no YouTube URL is provided.',
+            options: {
+                accept: 'video/*',
+            },
+            group: 'successStories',
+        }),
+        defineField({
+            name: 'successStoriesVideoTitle',
+            title: 'Video Title',
+            type: 'string',
+            description: 'Accessible title for the embedded or uploaded video.',
+            initialValue: 'Client testimonial video',
+            group: 'successStories',
         }),
 
         // Features

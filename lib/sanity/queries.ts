@@ -402,6 +402,11 @@ export async function getHomePage() {
     testimonialsTitle,
     testimonialsDescription,
     testimonials,
+    successStoriesTitle,
+    successStoriesDescription,
+    successStoriesVideoUrl,
+    "successStoriesVideoFile": successStoriesVideoFile.asset->url,
+    successStoriesVideoTitle,
     featuresTitle,
     featuresDescription,
     features[] {

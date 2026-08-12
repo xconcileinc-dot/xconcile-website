@@ -18,6 +18,31 @@ import { ServiceInquiryForm } from "@/components/services/ServiceInquiryForm";
 // Enable ISR
 export const revalidate = 60;
 
+function getYouTubeEmbedUrl(url?: string | null) {
+  if (!url) return null;
+
+  if (!URL.canParse(url)) return null;
+
+  const parsedUrl = new URL(url);
+  const hostname = parsedUrl.hostname.replace(/^www\./, "");
+
+  if (hostname === "youtu.be") {
+    const videoId = parsedUrl.pathname.split("/").filter(Boolean)[0];
+    return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+  }
+
+  if (hostname === "youtube.com" || hostname === "m.youtube.com") {
+    if (parsedUrl.pathname.startsWith("/embed/")) {
+      return url;
+    }
+
+    const videoId = parsedUrl.searchParams.get("v");
+    return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+  }
+
+  return null;
+}
+
 export async function generateMetadata(): Promise<Metadata> {
   const sanityData = await getHomePage().catch(() => null);
 
@@ -89,6 +114,10 @@ export default async function HomePage() {
         company: "Creative Ventures",
       },
     ],
+    successStoriesTitle: "Our Success Stories",
+    successStoriesDescription: "Hear What Our Clients Have to Say",
+    successStoriesVideoUrl: "https://youtu.be/Mu0O-qTK1jo",
+    successStoriesVideoTitle: "Client testimonial video",
     featuresTitle: "Everything You Need to Succeed",
     featuresDescription:
       "Comprehensive solutions designed to streamline your operations and drive growth.",
@@ -168,6 +197,15 @@ export default async function HomePage() {
   };
 
   const data = sanityData || staticData;
+  const successStoriesTitle = data.successStoriesTitle || staticData.successStoriesTitle;
+  const successStoriesDescription =
+    data.successStoriesDescription || staticData.successStoriesDescription;
+  const successStoriesVideoFile = data.successStoriesVideoFile;
+  const successStoriesVideoUrl =
+    data.successStoriesVideoUrl || (!successStoriesVideoFile ? staticData.successStoriesVideoUrl : null);
+  const successStoriesVideoTitle =
+    data.successStoriesVideoTitle || staticData.successStoriesVideoTitle;
+  const successStoriesEmbedUrl = getYouTubeEmbedUrl(successStoriesVideoUrl);
   const recentPosts =
     sanityPosts && sanityPosts.length > 0
       ? sanityPosts.slice(0, 3)
@@ -382,6 +420,41 @@ export default async function HomePage() {
           <TestimonialSlider testimonials={data.testimonials || []} />
         </Container>
       </Section>
+
+      {/* Client Testimonial Video */}
+      {(successStoriesEmbedUrl || successStoriesVideoFile) && (
+        <Section background="white" spacing="lg">
+          <Container>
+            <div className="text-center mb-12 animate-fade-in-up">
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
+                {successStoriesTitle}
+              </h2>
+              <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
+                {successStoriesDescription}
+              </p>
+            </div>
+
+            <div className="max-w-5xl mx-auto overflow-hidden rounded-3xl bg-neutral-950 shadow-2xl ring-1 ring-neutral-200">
+              {successStoriesEmbedUrl ? (
+                <iframe
+                  src={successStoriesEmbedUrl}
+                  title={successStoriesVideoTitle}
+                  className="aspect-video w-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              ) : (
+                <video
+                  src={successStoriesVideoFile}
+                  title={successStoriesVideoTitle}
+                  className="aspect-video w-full"
+                  controls
+                />
+              )}
+            </div>
+          </Container>
+        </Section>
+      )}
 
       {/* Partner Logos */}
       <Section background="white" spacing="md">
